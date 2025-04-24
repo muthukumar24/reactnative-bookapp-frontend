@@ -5,7 +5,8 @@ import {
   TextInput,
   Platform,
   TouchableOpacity,
-  Alert
+  Alert,
+  ActivityIndicator
 } from "react-native";
 import React, { useState } from "react";
 import styles from "../../assets/styles/signup.styles";
@@ -25,11 +26,10 @@ const Signup = () => {
   const handleSignup = async () => {
     const result = await register(username, email, password);
 
-    if(result.success) {
-      Alert.alert("Success" , "User Created");
-    }
-    else {
-      Alert.alert('Error', result.error);
+    if (result.success) {
+      Alert.alert("Success", "User created successfully");
+    } else {
+      Alert.alert("Error", result.error || "Something went wrong");
     }
   };
 
